@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CollectionService } from '../../../core/collection.service';
 import { ItemsModule } from '../../items.module';
+import { ItemComponent } from '../../components/item/item.component'
 
 @Component({
   selector: 'app-list-items',
@@ -9,7 +10,7 @@ import { ItemsModule } from '../../items.module';
 })
 export class ListItemsComponent implements OnInit {
 
-  user = [{
+  /*user = [{
     name: 'paul'
   },
   {
@@ -18,10 +19,10 @@ export class ListItemsComponent implements OnInit {
   {
     name: 'jacques'
   },
-] 
+] */
 
   constructor(public collectionService: CollectionService) { 
-    console.log(this.collectionService);
+    //console.log(this.collectionService);
   }
 
   ngOnInit() {

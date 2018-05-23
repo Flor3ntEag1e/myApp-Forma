@@ -8,6 +8,9 @@ import { CoreModule } from './core/core.module';
 import { HomeModule } from './home/home.module';
 import { ItemsModule } from './items/items.module';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { AppRoutingModule } from './app-routing.module';
+import { environment } from '../environments/environment';
+import { Router } from '@angular/router';
 
 @NgModule({
   declarations: [
@@ -15,6 +18,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
   ],
   imports: [
     BrowserModule,
+    AppRoutingModule,
     SharedModule,
     CoreModule,
     HomeModule,
@@ -26,4 +30,10 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule { 
+  constructor(router: Router) {
+    if(!environment.production) {
+      console.log('Routes: ', JSON.stringify(router.config, undefined, 2));
+    }
+  }
+}

@@ -1,10 +1,11 @@
-<!-- <p>
+ <p>
   list-items works!
 </p>
  
-<ul>
+<!-- <ul>
   <li *ngFor="let users of user"> {{users.name}}</li>
-</ul>
+</ul> -->
 
 <ng-container *ngFor="let item of collectionService.collection"> {{item.id}} - {{item.name}}</ng-container>
--->
+
+<app-item [value]='item'></app-item>
