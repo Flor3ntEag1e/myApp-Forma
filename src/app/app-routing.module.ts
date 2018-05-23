@@ -1,22 +1,17 @@
 import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
+import { RouterModule, Routes, PreloadAllModules } from '@angular/router';
 import { HomeComponent } from './home/home/home.component';
 import { environment } from '../environments/environment';
 
 const appRoutes: Routes = [
-    {
-        path: 'home',
-        component: HomeComponent
-    },
-    {
-        path: '',
-        redirectTo: '/home', pathMatch: 'full'
-    }
+    {path: 'home', component: HomeComponent},
+    {path: '', redirectTo: '/home', pathMatch: 'full'},
+    {path: 'items', loadChildren: './items/items.module#ItemsModule'}
 ]
 
 @NgModule({
   imports: [
-    RouterModule.forRoot(appRoutes)
+    RouterModule.forRoot(appRoutes, { preloadingStrategy: PreloadAllModules})
     //Pour debug: 
     //RouterModule.forRoot(appRoutes, {enableTracing: !environment.production})
   ],

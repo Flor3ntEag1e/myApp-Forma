@@ -5,14 +5,12 @@ import { AddComponent } from './containers/add/add.component';
 
 
 const itemsRoutes: Routes = [
-    {
-        path: 'items',
-        children: [
-          {path: 'add', component: AddComponent},
-          {path: 'list', component: ListItemsComponent}
-        ]
-    }
+  { path: '', redirectTo: 'list', pathMatch: 'full' },
+  { path: 'add', component: AddComponent },
+  { path: 'list', component: ListItemsComponent }
 ]
+    
+
 
 @NgModule({
   imports: [

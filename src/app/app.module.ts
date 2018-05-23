@@ -6,7 +6,6 @@ import { SharedModule } from './shared/shared.module';
 import { PagenotfoundModule } from './pagenotfound/pagenotfound.module';
 import { CoreModule } from './core/core.module';
 import { HomeModule } from './home/home.module';
-import { ItemsModule } from './items/items.module';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AppRoutingModule } from './app-routing.module';
 import { environment } from '../environments/environment';
@@ -23,7 +22,6 @@ import { Router } from '@angular/router';
     CoreModule,
     HomeModule,
     PagenotfoundModule,
-    ItemsModule,
     NgbModule.forRoot()
 
   ],
