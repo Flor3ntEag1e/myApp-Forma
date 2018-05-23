@@ -1,13 +1,6 @@
-<p>
-  list-items works!
-</p>
 
-<!-- <ul>
-  <li *ngFor="let users of user"> {{users.name}}</li>
-</ul> -->
-
-<!-- <ng-container *ngFor="let item of collectionService.collection"> {{item.id}} - {{item.name}}</ng-container> -->
-
-<div *ngFor="let item of collectionService.collection">
-  <app-item [value]='item'></app-item>
+<div class="container">
+  <ng-container *ngFor="let item of (collectionService.collection$ | async)">
+    <app-item [value]='item'></app-item>
+  </ng-container>
 </div>
