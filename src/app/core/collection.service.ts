@@ -24,6 +24,12 @@ export class CollectionService {
         reference: '4587',
         state: this.state.LIVREE
       },
+      {
+        id: '3',
+        name: 'Nobody',
+        reference: '8888',
+        state: this.state.ENCOURS
+      }
     ];
     this.collection$ = of(this.collection);
   }

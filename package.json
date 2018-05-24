@@ -13,7 +13,7 @@
   },
   "private": true,
   "dependencies": {
-    "@angular/animations": "^6.0.2",
+    "@angular/animations": "^6.0.3",
     "@angular/common": "^6.0.2",
     "@angular/compiler": "^6.0.2",
     "@angular/core": "^6.0.2",
@@ -24,7 +24,9 @@
     "@angular/router": "^6.0.2",
     "@ng-bootstrap/ng-bootstrap": "^2.0.0",
     "bootstrap": "^4.1.1",
+    "chart.js": "^2.7.2",
     "core-js": "^2.5.4",
+    "primeng": "^6.0.0-alpha.1",
     "rxjs": "^6.0.0",
     "zone.js": "^0.8.26"
   },
