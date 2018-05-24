@@ -13,7 +13,7 @@ export class MenuComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-    this.title= "Ce p'tit bonhomme c'est Butters";
+    this.title= "Chart";
     this.isCollapsed = true;
   }
 

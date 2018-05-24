@@ -1,2 +1,2 @@
-<ng-container *ngFor='let user of users'>{{user.note}} </ng-container>
-<p-chart type="pie" [data]="donnees"></p-chart>
+<ng-container *ngFor='let user of users'>{{user.note}} - {{user.id}} !</ng-container>
+<p-chart appInfo type="polarArea" [data]="donnees"></p-chart>

@@ -5,6 +5,7 @@ import { MenuComponent } from './menu/menu.component';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { RouterModule } from '@angular/router';
 import { StateDirective } from './state.directive';
+import { InfoDirective } from './info.directive';
 
 @NgModule({
   imports: [
@@ -14,11 +15,12 @@ import { StateDirective } from './state.directive';
   ],
   declarations: [
     MenuComponent,
-    StateDirective
+    StateDirective,
+    InfoDirective
   ],
 
   exports: [
-    MenuComponent, StateDirective
+    MenuComponent, StateDirective, InfoDirective
   ]
 })
 export class SharedModule { }
