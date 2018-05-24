@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { State } from '../../components/item/state.enum';
+import { FormBuilder, Validators } from '@angular/forms';
+import { FormGroup } from '@angular/forms';
+import { debounceTime, distinctUntilChanged } from 'rxjs/operators'; //rxjs 6
 
 @Component({
   selector: 'app-add',
@@ -8,19 +11,41 @@ import { State } from '../../components/item/state.enum';
 })
 export class AddComponent implements OnInit {
 
+  form: FormGroup;
   state = State;
-  nom: string;
-  reference: string;
-  etat: string;
+  libelles: string[] = Object.values(State);
 
-  constructor() { }
+  constructor(public fb: FormBuilder) { }
 
   ngOnInit() {
-    this.etat = State.ALIVRER;
+    this.createForm();
+    this.form.get('name').valueChanges.pipe(
+      debounceTime(400),
+      distinctUntilChanged()
+    ).subscribe((value) => console.log(value));
+
+    this.form.valueChanges.pipe(
+      debounceTime(400),
+      distinctUntilChanged()
+    ).subscribe((value) => console.log(value));
+
   }
 
-  process(form) {
-    console.log(form.value);
+  createForm() {
+    this.form = this.fb.group({
+      name: ['', Validators.required],
+      reference: ['', Validators.minLength(4)],
+      state: this.state.ALIVRER
+    })
+  }
+
+  process() {
+    //Persister les données appel http/ web service
+    this.form.reset();
+  }
+
+  isError(fieldName: string) {
+    return this.form.get(fieldName).invalid && this.form.get(fieldName).touched;
   }
 
 }

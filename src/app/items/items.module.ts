@@ -5,13 +5,14 @@ import { ItemsRoutingModule } from './items-routing.module';
 import { AddComponent } from './containers/add/add.component';
 import { ItemComponent } from './components/item/item.component';
 import { SharedModule } from '../shared/shared.module';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   imports: [
     CommonModule,
     SharedModule,
     FormsModule,
+    ReactiveFormsModule,
     ItemsRoutingModule
   ],
   declarations: [ListItemsComponent, AddComponent, ItemComponent],
