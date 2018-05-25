@@ -3,6 +3,8 @@ import { State } from '../../components/item/state.enum';
 import { FormBuilder, Validators } from '@angular/forms';
 import { FormGroup } from '@angular/forms';
 import { debounceTime, distinctUntilChanged } from 'rxjs/operators'; //rxjs 6
+import { CollectionService } from '../../../core/collection.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-add',
@@ -15,7 +17,7 @@ export class AddComponent implements OnInit {
   state = State;
   libelles: string[] = Object.values(State);
 
-  constructor(public fb: FormBuilder) { }
+  constructor(public fb: FormBuilder, public cs: CollectionService, public r: Router) { }
 
   ngOnInit() {
     this.createForm();
@@ -41,6 +43,8 @@ export class AddComponent implements OnInit {
 
   process() {
     //Persister les données appel http/ web service
+    this.cs.addItem(this.form.value);
+    this.r.navigate(['items','list']);
     this.form.reset();
   }
 

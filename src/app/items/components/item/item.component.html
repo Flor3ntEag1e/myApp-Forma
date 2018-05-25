@@ -11,5 +11,22 @@
     >
     {{state.ENCOURS}}
     </button>
+    <button class="btn btn-primary"
+    *ngIf='state.ENCOURS === value.state'
+    (click)='changeState(state.LIVREE)' 
+    >
+    {{state.LIVREE}}
+    </button>
+    <button class="btn btn-primary"
+    *ngIf='state.LIVREE === value.state'
+    (click)='changeState(state.ALIVRER)' 
+    >
+    {{state.ALIVRER}}
+    </button>
+    <button class="btn btn-danger"
+    (click)='deleteItem()' 
+    >
+    Delete
+    </button>
   </div>
 </div>

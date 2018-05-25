@@ -2,16 +2,19 @@ import { Injectable } from '@angular/core';
 import { Item } from './item.model';
 import { Observable, from, of } from 'rxjs';
 import { State } from '../items/components/item/state.enum';
+import { AngularFirestore, AngularFirestoreCollection } from 'angularfire2/firestore';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CollectionService {
+  itemsCollection: AngularFirestoreCollection<Item>;
   state = State;
-  collection: Item[];
-  collection$: Observable<Item[]>;
-  constructor() { 
-    this.collection = [
+  _collection$: Observable<Item[]>;
+  //collection$: Observable<Item[]>;
+  
+  constructor(private afs: AngularFirestore) { 
+   /* this.collection = [
       {
         id: '1',
         name: 'myName',
@@ -31,7 +34,35 @@ export class CollectionService {
         state: this.state.ENCOURS
       }
     ];
-    this.collection$ = of(this.collection);
+    this.collection$ = of(this.collection);*/
+
+    this.itemsCollection = afs.collection<Item>('collection');
+    this._collection$ = this.itemsCollection.valueChanges();
+
+  }
+
+  //add item
+  addItem(item: Item) {
+    item.id = this.afs.createId();
+    this.itemsCollection.doc(item.id).set(item)
+    .catch(error => console.log(error));
+  }
+
+  //update item
+  update(item: Item) {
+    this.itemsCollection.doc(item.id).update(item)
+    .catch(error => console.log(error));
+  }
+
+  //delete item
+  delete(item: Item) {
+    this.itemsCollection.doc(item.id).delete()
+    .catch(error => console.log(error));
+  }
+
+  //get item id
+  getItem(id: string) {
+    return this.afs.collection<Item>(`collection/${id}`).valueChanges();
   }
 
   /*get collection(): Item[] {
